@@ -8,21 +8,16 @@ def main(stdscr):
     BLUE_AND_BLACK = curses.color_pair(1)
     RED_AND_BLACK = curses.color_pair(2)
 
-    counter_win = curses.newwin(1, 20, 10, 10)
-    stdscr.addstr("hello world!")
+    pad = curses.newpad(100, 100)
     stdscr.refresh()
 
     for i in range(100):
-        counter_win.clear()
-        color = BLUE_AND_BLACK
+        for j in range(26):
+            char = chr(67 + j)
+            pad.addstr(char, BLUE_AND_BLACK)
 
-        if i % 2 == 0:
-            color = RED_AND_BLACK
-
-        counter_win.addstr(f"Count: {i}", color)
-        counter_win.refresh()
-        time.sleep(0.1)
-
+    # pad_y1, pad_x1, screen_x, screen_y, pad_y2, pad_x2
+    pad.refresh(0, 0, 5, 10, 25, 50)
     stdscr.getch()
 
 wrapper(main)
