@@ -16,8 +16,12 @@ def main(stdscr):
             char = chr(67 + j)
             pad.addstr(char, BLUE_AND_BLACK)
 
-    # pad_y1, pad_x1, screen_x, screen_y, pad_y2, pad_x2
-    pad.refresh(0, 0, 5, 10, 25, 50)
+    for i in range(100):
+        stdscr.clear()
+        stdscr.refresh()
+        # pad_y1, pad_x1, screen_x, screen_y, pad_y2, pad_x2
+        pad.refresh(i, 0, 0, 0, 20, 20)
+        time.sleep(0.2)
     stdscr.getch()
 
 wrapper(main)
